@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="magic-line.css">
+	<title>magic-line</title>
+</head>
+
+<body>
+	<section class="section">
+		<h2 class="section__title">
+			Объявление через селектор
+		</h2>
+		<div class="section__text">
+			<p>Доступен поиск по селектору. Если ввести селеткор, то найдется первый эелемент на странице.</p>
+		</div>
+		<pre><code><span class="all">const</span> <span class="var">magicFirst</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-first]'</span>, {});</code></pre>
+		<div class="section__wrapper">
+		</div>
+		<div class="section__wrapper">
+			<nav data-list-first>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item ">Пункт 1</li>
+					<li class="list__item list__item_active">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Объявление через объект
+		</h2>
+		<div class="section__text">
+			<p>Доступен поиск по объекту. Если ввести объект, то найдется нужный объект.</p>
+		</div>
+		<pre><code><span class="all">const</span> <span class="var">magicSeconds</span> = <span class="red">document</span>.<span class="function">querySelectorAll</span>(<span class="string">'[data-list-second]'</span>);
+<span class="all">if</span>(<span class="red">magicSeconds</span>){
+   <span class="red">magicSeconds</span>.<span class="function">forEach</span>(<span class="red">magic</span> => {
+      <span class="all">const</span> <span class="var">magicSeconds</span> = <span class="all">new</span> <span class="function">MagicLine</span>(<span class="red">magic</span>, {});
+   });
+}</code></pre>
+		<div class="section__wrapper">
+			<nav data-list-second>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item list__item_high list__item_active">Пункт 1</li>
+					<li class="list__item">Пункт 2</li>
+					<li class="list__item list__item_long"><span>Пункт 3</span></li>
+					<li class="list__item">Пункт 4</li>
+					<li class="list__item">Пункт 5</li>
+					<li class="list__item">Пункт 6</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="section__wrapper">
+			<nav data-list-second>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item list__item_long">Пункт 1</li>
+					<li class="list__item">Пункт 2</li>
+					<li class="list__item list__item_big list__item_active">Пункт 3</li>
+					<li class="list__item list__item_high">Пункт 4</li>
+					<li class="list__item">Пункт 5</li>
+					<li class="list__item list__item_long">Пункт 6</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Указание отступа от пункта
+		</h2>
+		<pre><code><span class="all">const</span> <span class="var">magicMargin</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-margin]'</span>, {
+   <span class="red">margin</span>: <span class="number">20</span>,
+});</code></pre>
+		<div class="section__wrapper">
+			<nav data-list-margin>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item list__item_long">Пункт 1</li>
+					<li class="list__item">Пункт 2</li>
+					<li class="list__item list__item_big"><span>Пункт 3</span></li>
+					<li class="list__item">Пункт 4</li>
+					<li class="list__item list__item_active">Пункт 5</li>
+					<li class="list__item list__item_high">Пункт 6</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Событие, при котором срабатывает перемещение линии
+		</h2>
+		<div class="section__text">
+			<p>Дотсупна настройка нескольких вариантов работ:</p>
+			<p><b class="string">click</b> - перемещение линии происходит по клику;</p>
+			<p><b class="string">motion-in</b> - перемещение линии присходит при наведении на пункт;</p>
+			<p><b class="string">motion-in-out</b> - перемещение линии присходит при наведении на пункт и когда мышь уходит со всех пунктов, то линия становится на начальное положение</p>
+		</div>
+		<h3 class="section__title section__title_small">click</h3>
+		<pre><code><span class="all">const</span> <span class="var">magicThird</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-click]'</span>, {
+   <span class="red">usedEvent</span>: <span class="string">'click'</span>,
+});</code></pre>
+		<div class="section__wrapper">
+			<nav data-list-click>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item list__item_high list__item_active">Пункт 1</li>
+					<li class="list__item">Пункт 2</li>
+					<li class="list__item list__item_big"><span>Пункт 3</span></li>
+					<li class="list__item">Пункт 4</li>
+					<li class="list__item ">Пункт 5</li>
+					<li class="list__item">Пункт 6</li>
+				</ul>
+			</nav>
+		</div>
+		<!--  -->
+		<h3 class="section__title section__title_small">motion-in</h3>
+		<pre><code><span class="all">const</span> <span class="var">magicFourth</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-motion-in]'</span>, {
+   <span class="red">usedEvent</span>: <span class="string">'motion-in'</span>,
+});</code></pre>
+		<div class="section__wrapper">
+			<nav data-list-motion-in>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item list__item_high list__item_active">Пункт 1</li>
+					<li class="list__item  list__item_big">Пункт 2</li>
+					<li class="list__item list__item_long"><span>Пункт 3</span></li>
+					<li class="list__item">Пункт 4</li>
+					<li class="list__item  list__item_long">Пункт 5</li>
+					<li class="list__item">Пункт 6</li>
+				</ul>
+			</nav>
+		</div>
+		<!--  -->
+		<h3 class="section__title section__title_small">motion-in-out</h3>
+		<pre><code><span class="all">const</span> <span class="var">magicFifth</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-motion-in-out]'</span>, {
+   <span class="red">usedEvent</span>: <span class="string">'motion-in-out'</span>,
+});</code></pre>
+		<div class="section__wrapper">
+			<nav data-list-motion-in-out>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item list__item_high">Пункт 1</li>
+					<li class="list__item  list__item_big">Пункт 2</li>
+					<li class="list__item list__item_long list__item_active"><span>Пункт 3</span></li>
+					<li class="list__item">Пункт 4</li>
+					<li class="list__item  list__item_long">Пункт 5</li>
+					<li class="list__item">Пункт 6</li>
+				</ul>
+			</nav>
+		</div>
+
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Переход из события наведения в клик на мобилке
+		</h2>
+		<pre><code><span class="all">const</span> <span class="var">magicSixth</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-first]'</span>, {
+   <span class="red">motionToClick</span>: <span class="function">true</span>,
+   <span class="red">usedEvent</span>: <span class="function">'click'</span>,
+});</code></pre>
+		<div class="section__wrapper">
+			<nav data-list-motionToClick>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item ">Пункт 1</li>
+					<li class="list__item list__item_active">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Определение мобилки
+		</h2>
+		<div class="section__text">
+			<p>Плагин может определить наличие тач экрана и перевести собтия наведения мыши на событие клика.</p>
+			<p>Также есть возможность удалить линию на опреденном разрешении экрана.</p>
+			<p>Все настройки могут быть указаны в инициализации или дата-атрибутом.</p>
+			<p>Дата-атрибуты имеют высший приоритет!</p>
+		</div>
+		<div class="section__wrapper">
+			<h3 class="section__title section__title_small">
+				Перевод события из наведения в клик на экранах меньше 900px.
+			</h3>
+			<pre><code><span class="all">const</span> <span class="var">magicSeventh</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-motion-to-click]'</span>, {
+   <span class="red">media</span>: <span class="string">'max,900'</span>,
+   <span class="red">mediaType</span>: <span class="string">'motion-to-click'</span>,
+});</code></pre>
+			<nav data-list-motion-to-click>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item ">Пункт 1</li>
+					<li class="list__item list__item_active">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="section__wrapper">
+			<h3 class="section__title section__title_small">
+				Удаление линии на экранах больше 900px.
+			</h3>
+			<pre><code><span class="all">const</span> <span class="var">magicEighth</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-destroy]'</span>, {
+   <span class="red">media</span>: <span class="string">'min,900'</span>,
+   <span class="red">mediaType</span>: <span class="string">'destroy'</span>,
+});</code></pre>
+			<nav data-list-destroy>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item ">Пункт 1</li>
+					<li class="list__item list__item_active">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="section__wrapper">
+			<h3 class="section__title section__title_small">
+				Удаление линии на экранах меньше 900px. Указано через html.
+			</h3>
+			<pre><code><span class="all">const</span> <span class="var">magicNinth</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-destroy-attr]'</span>, {
+   <span class="red">media</span>: <span class="string">'min,900'</span>,
+   <span class="red">mediaAttribute</span>: <span class="string">'data-media'</span>,
+   <span class="red">mediaType</span>: <span class="function">false</span>,
+   <span class="red">mediaTypeAttribute</span>: <span class="string">'data-media-type'</span>,
+});
+</code></pre>
+			<nav data-list-destroy-attr data-media="max,900" data-media-type="destroy">
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item ">Пункт 1</li>
+					<li class="list__item list__item_active">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Появление линии
+		</h2>
+		<div class="section__text">
+			<p>Необходимо указать класс для пункта, который будет первым выделенным.</p>
+			<p>Если не указывать классом, то есть настройка, которая ставит линию всегда на первый пункт</p>
+		</div>
+		<h3 class="section__title section__title_small">Не указан активный пункт в html.</h3>
+		<div class="section__wrapper">
+			<pre><code><span class="all">const</span> <span class="var">magicInitLineFirst</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-init-line-first]'</span>, {
+   <span class="red">activeFirstElement</span>: <span class="function">true</span>,
+});</code></pre>
+			<nav data-list-init-line-first>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item ">Пункт 1</li>
+					<li class="list__item">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="section__wrapper">
+			<h3 class="section__title section__title_small"></h3>
+			<pre><code><span class="all">const</span> <span class="var">magicInitLineSecond</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-init-line-second]'</span>, {
+   <span class="red">activeFirstElement</span>: <span class="function">false</span>,
+});</code></pre>
+			<nav data-list-init-line-second>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item ">Пункт 1</li>
+					<li class="list__item">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+		<h3 class="section__title section__title_small">Указан активный пункт в html.</h3>
+		<div class="section__wrapper">
+			<pre><code><span class="all">const</span> <span class="var">magicInitLineThird</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-init-line-third]'</span>, {
+   <span class="red">activeFirstElement</span>: <span class="function">true</span>,
+});</code></pre>
+			<nav data-list-init-line-third>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item">Пункт 1</li>
+					<li class="list__item list__item_active">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="section__wrapper">
+			<h3 class="section__title section__title_small"></h3>
+			<pre><code><span class="all">const</span> <span class="var">magicInitLineFourth</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-init-line-fourth]'</span>, {
+   <span class="red">activeFirstElement</span>: <span class="function">false</span>,
+});</code></pre>
+			<nav data-list-init-line-fourth>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item">Пункт 1</li>
+					<li class="list__item list__item_active">Пункт 2</li>
+					<li class="list__item">Пункт 3</li>
+					<li class="list__item">Пункт 4</li>
+				</ul>
+			</nav>
+		</div>
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Создается событие resize.
+		</h2>
+		<pre>
+<code><span class="all">const</span> <span class="var">magicNinth</span> <span class="all">=</span> <span class="all">new</span> <span class="function">MagicLine</span>(<span class="string">'[data-list-destroy-attr]'</span>, {
+   <span class="function">resize</span>: <span class="function">(</span><span class="red">magicLine</span><span class="function">)</span> <span class="all">=></span> { 
+      <span class="comment">// magicLine - Весь класс. Можно менять параметры на лету, применять методы.</span> 
+   },
+});</code></pre>
+	</section>
+
+	<section class="section">
+		<h2 class="section__title">
+			Методы.
+		</h2>
+		<div class="section__text">
+			<p><b class="function">destroy()</b> удаляет линию и события клика / наведения.</p>
+			<p><b class="function">init()</b> устанавливает линию и события клика / наведения.</p>
+		</div>
+
+		<div class="section__wrapper">
+			<div class="section__buttons">
+				<button type="button" class="section__button destroy">destroy()</button>
+				<button type="button" class="section__button init">init()</button>
+			</div>
+			<nav data-list-method>
+				<span class="line"></span>
+				<ul class="list">
+					<li class="list__item list__item_high ">Пункт 1</li>
+					<li class="list__item">Пункт 2</li>
+					<li class="list__item list__item_big"><span>Пункт 3</span></li>
+					<li class="list__item list__item_active">Пункт 4</li>
+					<li class="list__item">Пункт 5</li>
+					<li class="list__item">Пункт 6</li>
+				</ul>
+			</nav>
+		</div>
+
+	</section>
+
+	<script src="is-mob.js"></script>
+	<script src="magic-line.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

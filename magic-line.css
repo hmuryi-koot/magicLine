@@ -1,0 +1,8 @@
+[data-list-first] {
+	position: relative;
+}
+.line {
+	position: absolute;
+	height: 5px;
+	transition: left 0.2s ease-in 0s, top 0.2s ease-in 0s, width 0.2s ease-in 0s;
+}
